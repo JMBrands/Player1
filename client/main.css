@@ -6,3 +6,45 @@ div#ball {
     width: 20px;
     height: 20px;
 }
+
+.centerH {
+    position: absolute;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, 0);
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+.noto-sans {
+  font-family: "Noto Sans Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+div#field {
+    transform: translate(-50%, -45%);
+    width: 1200px;
+    height: 600px;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}
+
+div#platform {
+    position: absolute;
+    left: 200px;
+    top: 20px;
+    width: 20px;
+    height: 250px;
+    background-color: blue;
+}

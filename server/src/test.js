@@ -33,7 +33,7 @@ async function postDelta(gameId, playerId, delta) {
     const playerId = 1;
 
     let responseBody = await getState(gameId);
-    console.log(responseBody);
+    // console.log(responseBody);
 
     responseBody = await postDelta(gameId, playerId, {
         type: "delta",
@@ -41,6 +41,6 @@ async function postDelta(gameId, playerId, delta) {
     });
     console.log(responseBody);
 
-    responseBody = await getState(gameId);
-    console.log(responseBody);
+    // responseBody = await getState(gameId);
+    // console.log(responseBody);
 })();

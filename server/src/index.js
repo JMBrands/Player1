@@ -5,11 +5,16 @@ const baseSpdBall = 3;
 app.use(express.json());
 const states = {
 };
-function moveBall(ball) {
+function moveBall(ball){
     const delta_x = ball.spd * Math.cos(ball.angle);
     const delta_y = ball.spd * Math.sin(ball.angle);
     ball.x += delta_x;
     ball.y += delta_y;
+}
+function changeAgle(ball){
+    if(ball.y > 580 || ball.y < 20){
+        ball.angle = -ball.angle
+    }
 }
 
 app.get('/state/:game_id', (req, res) => {
@@ -70,6 +75,9 @@ setInterval(()=>{
     for(GameId in states){
         console.log(states[GameId]);
         moveBall(states[GameId].ball);
+        if(ball.y > 580 || ball.y < 20){
+            ball.angle = -ball.angle
+        }
     }
 },1000)
 app.get('/yoyo', (req, res) => {

@@ -13,11 +13,10 @@ function setScore(id, score1, score2) {
 }
 
 function updateState(state) {
-    setPosition("platform-1", state.player1.x, state.player1.y);
-    setPosition("platform-2", state.player2.x, state.player2.y);
+    setPosition("platform-1", state['1'].x, state['1'].y);
+    setPosition("platform-2", state['2'].x, state['2'].y);
     setPosition("ball", state.ball.x, state.ball.y);
-    setScore("score", state.player1.score, state.player2.score);
-    
+    setScore("score", state['1'].score, state['2'].score);
 }
 
 async function getState(gameId) {
@@ -80,24 +79,6 @@ function closeLogin() {
 
 
 setInterval(async () => {
-    // todo getState,
-    // todo update view with state
-    const state = {
-        ball: {
-            x: 100,
-            y: 500,
-        },
-        player1: {
-            x: 400,
-            y: 300,
-            score: 50
-        },
-        player2: {
-            x: 50,
-            y: 200,
-            score: 10
-        }
-    };
-    // const json = getState(0);
-    updateState(state);
-}, 10);
+    const json = await getState(0);
+    updateState(json);
+}, 100);

@@ -1,9 +1,16 @@
 const express = require('express');
 const app = express();
 const spd = 5;
+const baseSpdBall = 3;
 app.use(express.json());
 const states = {
 };
+function moveBall(ball) {
+    const delta_x = ball.spd * Math.cos(ball.angle);
+    const delta_y = ball.spd * Math.sin(ball.angle);
+    ball.x += delta_x;
+    ball.y += delta_y;
+}
 
 app.get('/state/:game_id', (req, res) => {
     const game_id = req.params.game_id;
@@ -13,7 +20,9 @@ app.get('/state/:game_id', (req, res) => {
             type: "state",
             ball: {
                 x: 10,
-                y: 15
+                y: 15,
+                angle: 45,
+                spd: baseSpdBall
             },
             1: {
                 x: 0,
@@ -57,6 +66,12 @@ app.post('/delta/:game_id/:player', (req, res) => {
     res.send(gameState);
 });
 
+setInterval(()=>{
+    for(GameId in states){
+        console.log(states[GameId]);
+        moveBall(states[GameId].ball);
+    }
+},1000)
 app.get('/yoyo', (req, res) => {
     my_response = JSON.parse('{"yoyo": 16}');
     console.log(my_response);

@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
 const spd = 5;
-const baseSpdBall = 3;
+const baseSpdBall = 6;
+const incSpdBall = 3;
 app.use(express.json());
 const states = {
 };
@@ -14,6 +15,20 @@ function moveBall(ball){
 function changeAgle(ball){
     if(ball.y > 580 || ball.y < 20){
         ball.angle = -ball.angle
+    }
+}
+function endOfRound(ball, GameId){
+    if(ball.x > 1200){
+        GameId[1].score ++;
+        ball.spd += incSpdBall;
+        ball.x = 600;
+        ball.y = 300;
+    }
+    else if(ball.x < 0){
+        GameId[2].score ++;
+        ball.spd += incSpdBall;
+        ball.x = 600;
+        ball.y = 300;
     }
 }
 

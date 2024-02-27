@@ -28,11 +28,16 @@ app.get('/state/:game_id', (req, res) => {
             }
         };
     }
+    console.log(states);
     res.send(states[game_id]);
 });
 
 app.post('/delta/:game_id/:player', (req, res) => {
     console.log(req.body);
+
+    // TODO update state according to delta action
+    // return updated state
+
     res.send(JSON.stringify({
         hello: "World",
     }));

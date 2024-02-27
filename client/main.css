@@ -1,0 +1,8 @@
+div#ball {
+    position: absolute;
+    left: 100px;
+    top: 12px;
+    background-color: red;
+    width: 20px;
+    height: 20px;
+}

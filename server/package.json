@@ -1,0 +1,19 @@
+{
+  "name": "player1-server",
+  "version": "0.0.1",
+  "description": "Server for the Player1 game",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JMBrands/Player1.git"
+  },
+  "author": "Mees & Jonar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JMBrands/Player1/issues"
+  },
+  "homepage": "https://github.com/JMBrands/Player1#readme"
+}

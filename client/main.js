@@ -1,3 +1,5 @@
+let GameID = "";
+
 function setPosition(id, x, y) {
     const element = document.getElementById(id);
     element.style.left = x + "px";
@@ -64,25 +66,38 @@ document.addEventListener('keydown', async (e) => {
     }
 });
 
+function login() {
+    const dialog = document.getElementById("login");
+    dialog.showModal();
+}
+
+function closeLogin() {
+    const dialog = document.getElementById("login");
+    const input = document.getElementById("GameID");
+    dialog.close();
+    GameID = input.value;
+}
+
+
 setInterval(async () => {
     // todo getState,
     // todo update view with state
     const state = {
         ball: {
-            x: 0,
-            y: 0,
+            x: 100,
+            y: 500,
         },
         player1: {
-            x: 0,
-            y: 0,
-            score: 5
+            x: 400,
+            y: 300,
+            score: 50
         },
         player2: {
-            x: 0,
-            y: 0,
+            x: 50,
+            y: 200,
             score: 10
         }
     };
-    const json = getState(0);
+    // const json = getState(0);
     updateState(state);
 }, 10);

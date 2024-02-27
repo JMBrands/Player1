@@ -60,3 +60,11 @@ div#platform-2 {
     background-color: #F00;
     transform: translate(-50%, -50%);
 }
+
+input[type=submit] {
+    margin: 10px;
+}
+
+#login {
+    height: 50px;
+}

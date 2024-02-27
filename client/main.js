@@ -85,4 +85,4 @@ function closeLogin() {
 setInterval(async () => {
     const json = await getState(0);
     updateState(json);
-}, 1000);
+}, 100);

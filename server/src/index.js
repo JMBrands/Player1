@@ -22,12 +22,27 @@ function endOfRound(ball, GameId){
         GameId['1'].score ++;
         ball.x = 600;
         ball.y = 300;
+        let newAngle = Math.random();
+        newAngle *= 180;
+        if (newAngle < 90) {
+            ball.angle = newAngle - 45;
+        } else {
+            ball.angle = newAngle + 45;
+        }
     }
     else if(ball.x < 20){
         GameId['2'].score ++;
         ball.x = 600;
         ball.y = 300;
+        let newAngle = Math.random();
+        newAngle *= 180;
+        if (newAngle < 90) {
+            ball.angle = newAngle - 45;
+        } else {
+            ball.angle = newAngle + 135;
+        }
     }
+
 }
 
 app.get('/state/:game_id', (req, res) => {

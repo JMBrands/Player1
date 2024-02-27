@@ -1,7 +1,21 @@
 function setPosition(id, x, y) {
-    let element = document.getElementById(id);
-    element.style.left = y + "px";
-    element.style.top = x + "px";
+    const element = document.getElementById(id);
+    element.style.left = x + "px";
+    element.style.top = y + "px";
+    element.style.transform = "translate(0,0)";
+}
+
+function setScore(id, score1, score2) {
+    const element = document.getElementById(id);
+    element.innerHTML = score1 + " - " + score2;
+}
+
+function updateState(state) {
+    setPosition("platform-1", state.player1.x, state.player1.y);
+    setPosition("platform-2", state.player2.x, state.player2.y);
+    setPosition("ball", state.ball.x, state.ball.y);
+    setScore("score", state.player1.score, state.player2.score);
+    
 }
 
 async function getState(gameId) {
@@ -36,19 +50,39 @@ async function postDelta(gameId, playerId, delta) {
 document.addEventListener('keydown', async (e) => {
     console.log(e.key);
     if (e.key == 'ArrowRight') {
-        // todo handle arrow right
         const newState = await postDelta(0, 0, { type: "delta", action: "right" });
-        // todo update view according to state
+        updateState(newState);
     } else if (e.key == 'ArrowUp') {
-        // todo handle arrow up
+        const newState = await postDelta(0, 0, { type: "delta", action: "up" });
+        updateState(newState);
     } else if (e.key == 'ArrowLeft') {
-        // todo handle arrow left
+        const newState = await postDelta(0, 0, { type: "delta", action: "left" });
+        updateState(newState);
     } else if (e.key == 'ArrowDown') {
-        // todo handle arrow Down
+        const newState = await postDelta(0, 0, { type: "delta", action: "down" });
+        updateState(newState);
     }
 });
 
 setInterval(async () => {
     // todo getState,
     // todo update view with state
+    const state = {
+        ball: {
+            x: 0,
+            y: 0,
+        },
+        player1: {
+            x: 0,
+            y: 0,
+            score: 5
+        },
+        player2: {
+            x: 0,
+            y: 0,
+            score: 10
+        }
+    };
+    const json = getState(0);
+    updateState(state);
 }, 10);

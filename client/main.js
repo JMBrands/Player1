@@ -1,5 +1,5 @@
 let GameID = "";
-
+let PlayerID = "";
 function setPosition(id, x, y) {
     const element = document.getElementById(id);
     element.style.left = x + "px";
@@ -20,11 +20,12 @@ function updateState(state) {
 }
 
 async function getState(gameId) {
-    const response = await fetch('http://localhost:8000/state/' + gameId, {
+    const response = await fetch('/state/' + gameId, {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
         }
     });
 
@@ -34,11 +35,12 @@ async function getState(gameId) {
 }
 
 async function postDelta(gameId, playerId, delta) {
-    const response = await fetch('http://localhost:8000/delta/' + gameId + '/' + playerId, {
+    const response = await fetch('/delta/' + gameId + '/' + playerId, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
         },
         body: JSON.stringify(delta),
     });
@@ -51,16 +53,16 @@ async function postDelta(gameId, playerId, delta) {
 document.addEventListener('keydown', async (e) => {
     console.log(e.key);
     if (e.key == 'ArrowRight') {
-        const newState = await postDelta(0, 0, { type: "delta", action: "right" });
+        const newState = await postDelta(GameID, PlayerID, { type: "delta", action: "right" });
         updateState(newState);
     } else if (e.key == 'ArrowUp') {
-        const newState = await postDelta(0, 0, { type: "delta", action: "up" });
+        const newState = await postDelta(GameID, PlayerID, { type: "delta", action: "up" });
         updateState(newState);
     } else if (e.key == 'ArrowLeft') {
-        const newState = await postDelta(0, 0, { type: "delta", action: "left" });
+        const newState = await postDelta(GameID, PlayerID, { type: "delta", action: "left" });
         updateState(newState);
     } else if (e.key == 'ArrowDown') {
-        const newState = await postDelta(0, 0, { type: "delta", action: "down" });
+        const newState = await postDelta(GameID, PlayerID, { type: "delta", action: "down" });
         updateState(newState);
     }
 });
@@ -72,13 +74,15 @@ function login() {
 
 function closeLogin() {
     const dialog = document.getElementById("login");
-    const input = document.getElementById("GameID");
+    const gameID = document.getElementById("GameID");
+    const playerID = document.getElementById("PlayerID");
     dialog.close();
-    GameID = input.value;
+    GameID = gameID.value;
+    PlayerID = playerID.value;
 }
 
 
 setInterval(async () => {
     const json = await getState(0);
     updateState(json);
-}, 100);
+}, 1000);

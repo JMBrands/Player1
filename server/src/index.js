@@ -90,9 +90,8 @@ setInterval(()=>{
     for(GameId in states){
         console.log(states[GameId]);
         moveBall(states[GameId].ball);
-        if(ball.y > 580 || ball.y < 20){
-            ball.angle = -ball.angle
-        }
+        changeAngle(states[GameId].ball);
+        endOfRound(states[GameId].ball, GameId);
     }
 },1000)
 app.get('/yoyo', (req, res) => {

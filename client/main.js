@@ -47,3 +47,8 @@ document.addEventListener('keydown', async (e) => {
         // todo handle arrow Down
     }
 });
+
+setInterval(async () => {
+    // todo getState,
+    // todo update view with state
+}, 10);

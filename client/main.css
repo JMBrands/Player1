@@ -1,10 +1,11 @@
 div#ball {
     position: absolute;
-    left: 100px;
-    top: 12px;
+    left: 600px;
+    top: 300px;
     background-color: red;
     width: 20px;
     height: 20px;
+    transform: translate(-50%, -50%);
 }
 
 .centerH {
@@ -23,12 +24,12 @@ div#ball {
 }
 
 .noto-sans {
-  font-family: "Noto Sans Mono", monospace;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100;
+    font-family: "Noto Sans Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
 }
 
 div#field {
@@ -40,11 +41,22 @@ div#field {
     border-style: solid;
 }
 
-div#platform {
+div.platform {
     position: absolute;
-    left: 200px;
-    top: 20px;
-    width: 20px;
-    height: 250px;
-    background-color: blue;
+    width: 10px;
+    height: 200px;
+}
+
+div#platform-1 {
+    top: 50%;
+    left: 5%;
+    background-color: #00F;
+    transform: translate(-50%, -50%);
+}
+
+div#platform-2 {
+    top: 50%;
+    left: 95%;
+    background-color: #F00;
+    transform: translate(-50%, -50%);
 }

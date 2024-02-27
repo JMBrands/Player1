@@ -1,8 +1,70 @@
 div#ball {
     position: absolute;
-    left: 100px;
-    top: 12px;
+    left: 600px;
+    top: 300px;
     background-color: red;
     width: 20px;
     height: 20px;
+    transform: translate(-50%, -50%);
+}
+
+.centerH {
+    position: absolute;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, 0);
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+.noto-sans {
+    font-family: "Noto Sans Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+div#field {
+    transform: translate(-50%, -45%);
+    width: 1200px;
+    height: 600px;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}
+
+div.platform {
+    position: absolute;
+    width: 10px;
+    height: 200px;
+}
+
+div#platform-1 {
+    top: 50%;
+    left: 5%;
+    background-color: #00F;
+    transform: translate(-50%, -50%);
+}
+
+div#platform-2 {
+    top: 50%;
+    left: 95%;
+    background-color: #F00;
+    transform: translate(-50%, -50%);
+}
+
+input[type=submit] {
+    margin: 10px;
+}
+
+#login {
+    height: 75px;
 }
